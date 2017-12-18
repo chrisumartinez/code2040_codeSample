@@ -81,10 +81,18 @@ class Spell
   # If none are found it should return nil.
   # Tests: `bundle exec rspec -t lookup .`
   def self.find_by_mention(mention)
-    Spell.new({"Classification" => 'write this method',
-               "Effect" => 'write this method',
-               "Spell(Lower)" => 'write this method',
-               "Spell" => 'write this method'})
+    spellName = mention.name;
+    data  = Spell.data;
+    data.each do |item|
+      if(spellName == item["Spell(Lower)"])
+        spell_found = Spell.new({"Classification" => item["Classification"],
+               "Effect" => item["Effect"],
+               "Spell(Lower)" => item["Spell(Lower)"],
+               "Spell" => item["Spell"]})
+        return spell_found;
+      end
+    end
+    return nil;
   end
 
 end
