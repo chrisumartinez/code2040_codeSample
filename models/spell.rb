@@ -64,7 +64,15 @@ class Spell
   # which start with the same first letter as the spell's name
   # Tests: `bundle exec rspec -t letter .`
   def names_with_same_first_letter
-    #
+    data = Spell.data;
+    spell_array = Array.new;
+    data.each do |item|
+      spellName = item["Spell(Lower)"];
+      if(spellName[0,1] == @name[0,1])
+        spell_array.push(spellName)
+      end
+    end
+    return spell_array
   end
 
   # Spell 4: Lookup
