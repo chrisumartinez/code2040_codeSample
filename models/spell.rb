@@ -48,7 +48,15 @@ class Spell
   # (integer) of mentions of the spell.
   # Tests: `bundle exec rspec -t counter .`
   def mention_count
-    'write this method'
+    counter = 0;
+    #access Array using the Mention.data method:
+    data = Mention.data;
+    data.each do |item|
+      if(item["Spell"] == @name)
+        counter += 1
+      end
+    end
+    return counter;
   end
 
   # Spell 3: Letter
@@ -56,7 +64,7 @@ class Spell
   # which start with the same first letter as the spell's name
   # Tests: `bundle exec rspec -t letter .`
   def names_with_same_first_letter
-    ['write this method']
+    #
   end
 
   # Spell 4: Lookup
